@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiruppugazh App - Sudha & Sivasri Collections</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .tamil-font { font-family: 'Noto Sans Tamil', sans-serif; }
+        .hero-bg { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=2000'); background-size: cover; background-position: center; }
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); }
+        .song-card:hover { transform: translateY(-5px); transition: 0.3s; }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-orange-800">Thiruppugazh <span class="text-xs font-normal text-gray-500 block italic">By Sudha Raghunathan & Sivasri Skandaprasad</span></h1>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wider text-gray-600">
+                <a href="#library" class="hover:text-orange-700">The Library</a>
+                <a href="#about" class="hover:text-orange-700">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero-bg h-[450px] flex flex-col items-center justify-center text-center text-white px-6">
+        <h2 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">Divine Rhythms</h2>
+        <p class="text-lg md:text-2xl font-light max-w-2xl opacity-80">A dedicated collection of Arunagirinathar's Thiruppugazh, curated for the modern seeker.</p>
+        <a href="#library" class="mt-8 bg-orange-600 hover:bg-orange-700 px-10 py-3 rounded-full font-bold transition">Explore Songs</a>
+    </header>
+
+    <!-- Library Section -->
+    <main id="library" class="container mx-auto py-20 px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-16 border-b pb-8">
+            <h3 class="text-4xl font-bold text-gray-800">The Song Library</h3>
+            <p class="text-gray-500 mt-4 md:mt-0 italic text-sm">Click 'Listen' to play the official recording.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            
+            <!-- SONG CARD 1: Sudha - Muthai Tharu -->
+            <div class="song-card bg-white rounded-2xl shadow-sm border p-6 flex flex-col">
+                <div class="mb-4">
+                    <span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded uppercase">Sudha Raghunathan</span>
+                    <h4 class="text-xl font-bold mt-2">Muthai Tharu</h4>
+                    <p class="text-xs text-gray-400 font-semibold uppercase mt-1">Sthalam: Thiruchendur</p>
+                </div>
+                <div class="bg-stone-50 p-3 rounded-xl mb-6 flex-grow">
+                    <p class="tamil-font text-sm leading-relaxed text-gray-700">முத்தைத்தரு பத்தித் திருநகை...</p>
+                    <p class="text-[10px] text-gray-400 mt-2">Raga: Shanmukhapriya</p>
+                </div>
+                <button onclick="playVideo('FPRvN8K9oSc')" class="w-full bg-stone-900 text-white py-3 rounded-xl font-bold hover:bg-orange-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Listen
+                </button>
+            </div>
+
+            <!-- SONG CARD 2: Sivasri - Naatha Vinthu -->
+            <div class="song-card bg-white rounded-2xl shadow-sm border p-6 flex flex-col border-orange-100">
+                <div class="mb-4">
+                    <span class="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-1 rounded uppercase">Sivasri Skandaprasad</span>
+                    <h4 class="text-xl font-bold mt-2">Naatha Vinthu</h4>
+                    <p class="text-xs text-gray-400 font-semibold uppercase mt-1">Sthalam: General</p>
+                </div>
+                <div class="bg-stone-50 p-3 rounded-xl mb-6 flex-grow">
+                    <p class="tamil-font text-sm leading-relaxed text-gray-700">நாத விந்துகலாதி நமோநம...</p>
+                    <p class="text-[10px] text-gray-400 mt-2">Raga: Senjurutti</p>
+                </div>
+                <button onclick="playVideo('p_vF49X40eA')" class="w-full bg-stone-900 text-white py-3 rounded-xl font-bold hover:bg-orange-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Listen
+                </button>
+            </div>
+
+            <!-- SONG CARD 3: Sudha - Viral Maaran -->
+            <div class="song-card bg-white rounded-2xl shadow-sm border p-6 flex flex-col">
+                <div class="mb-4">
+                    <span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded uppercase">Sudha Raghunathan</span>
+                    <h4 class="text-xl font-bold mt-2">Viral Maaran</h4>
+                    <p class="text-xs text-gray-400 font-semibold uppercase mt-1">Sthalam: Thiruchendur</p>
+                </div>
+                <div class="bg-stone-50 p-3 rounded-xl mb-6 flex-grow">
+                    <p class="tamil-font text-sm leading-relaxed text-gray-700">விறல்மார னைந்து மலர்வாளி சிந்த...</p>
+                    <p class="text-[10px] text-gray-400 mt-2">Raga: Ragamalika</p>
+                </div>
+                <button onclick="playVideo('rO9pxX_Y9z7E')" class="w-full bg-stone-900 text-white py-3 rounded-xl font-bold hover:bg-orange-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Listen
+                </button>
+            </div>
+
+            <!-- SONG CARD 4: Sivasri - Thondhi Sariya -->
+            <div class="song-card bg-white rounded-2xl shadow-sm border p-6 flex flex-col border-orange-100">
+                <div class="mb-4">
+                    <span class="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-1 rounded uppercase">Sivasri Skandaprasad</span>
+                    <h4 class="text-xl font-bold mt-2">Thondhi Sariya</h4>
+                    <p class="text-xs text-gray-400 font-semibold uppercase mt-1">Sthalam: Thiruchendur</p>
+                </div>
+                <div class="bg-stone-50 p-3 rounded-xl mb-6 flex-grow">
+                    <p class="tamil-font text-sm leading-relaxed text-gray-700">தொந்தி சரிய மயிரே வெளிற...</p>
+                    <p class="text-[10px] text-gray-400 mt-2">Raga: Kambhoji</p>
+                </div>
+                <button onclick="playVideo('G4L1Y8n78_M')" class="w-full bg-stone-900 text-white py-3 rounded-xl font-bold hover:bg-orange-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Listen
+                </button>
+            </div>
+
+            <!-- SONG CARD 5: Sudha - Irumal Thiruthani -->
+            <div class="song-card bg-white rounded-2xl shadow-sm border p-6 flex flex-col">
+                <div class="mb-4">
+                    <span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded uppercase">Sudha Raghunathan</span>
+                    <h4 class="text-xl font-bold mt-2">Irumal</h4>
+                    <p class="text-xs text-gray-400 font-semibold uppercase mt-1">Sthalam: Thiruthani</p>
+                </div>
+                <div class="bg-stone-50 p-3 rounded-xl mb-6 flex-grow">
+                    <p class="tamil-font text-sm leading-relaxed text-gray-700">இருமலு ரோக முயலகன்...</p>
+                    <p class="text-[10px] text-gray-400 mt-2">Raga: Hamsadhwani</p>
+                </div>
+                <button onclick="playVideo('T_0mB_7D2X0')" class="w-full bg-stone-900 text-white py-3 rounded-xl font-bold hover:bg-orange-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Listen
+                </button>
+            </div>
+
+            <!-- SONG CARD 6: Sivasri - Agaramudhalena -->
+            <div class="song-card bg-white rounded-2xl shadow-sm border p-6 flex flex-col border-orange-100">
+                <div class="mb-4">
+                    <span class="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-1 rounded uppercase">Sivasri Skandaprasad</span>
+                    <h4 class="text-xl font-bold mt-2">Agaramudhalena</h4>
+                    <p class="text-xs text-gray-400 font-semibold uppercase mt-1">Sthalam: Pazhamudir Cholai</p>
+                </div>
+                <div class="bg-stone-50 p-3 rounded-xl mb-6 flex-grow">
+                    <p class="tamil-font text-sm leading-relaxed text-gray-700">அகரமுத லெனவுரைசெய்...</p>
+                    <p class="text-[10px] text-gray-400 mt-2">Raga: Sindubhairavi</p>
+                </div>
+                <button onclick="playVideo('G4L1Y8n78_M')" class="w-full bg-stone-900 text-white py-3 rounded-xl font-bold hover:bg-orange-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Listen
+                </button>
+            </div>
+
+            <!-- SONG CARD 7: Sudha - Agaramumaagi -->
+            <div class="song-card bg-white rounded-2xl shadow-sm border p-6 flex flex-col">
+                <div class="mb-4">
+                    <span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded uppercase">Sudha Raghunathan</span>
+                    <h4 class="text-xl font-bold mt-2">Agaramumaagi</h4>
+                    <p class="text-xs text-gray-400 font-semibold uppercase mt-1">Sthalam: Pazhamudir Cholai</p>
+                </div>
+                <div class="bg-stone-50 p-3 rounded-xl mb-6 flex-grow">
+                    <p class="tamil-font text-sm leading-relaxed text-gray-700">அகரமு மாகி யதிபனு மாகி...</p>
+                    <p class="text-[10px] text-gray-400 mt-2">Raga: Ragamalika</p>
+                </div>
+                <button onclick="playVideo('X1P_v-oY-oU')" class="w-full bg-stone-900 text-white py-3 rounded-xl font-bold hover:bg-orange-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Listen
+                </button>
+            </div>
+
+            <!-- SONG CARD 8: Sivasri - Kaithala Niraikani -->
+            <div class="song-card bg-white rounded-2xl shadow-sm border p-6 flex flex-col border-orange-100">
+                <div class="mb-4">
+                    <span class="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-1 rounded uppercase">Sivasri Skandaprasad</span>
+                    <h4 class="text-xl font-bold mt-2">Kaithala Niraikani</h4>
+                    <p class="text-xs text-gray-400 font-semibold uppercase mt-1">Sthalam: General/Ganesha</p>
+                </div>
+                <div class="bg-stone-50 p-3 rounded-xl mb-6 flex-grow">
+                    <p class="tamil-font text-sm leading-relaxed text-gray-700">கைத்தல நிறைகனி அப்பமொடு...</p>
+                    <p class="text-[10px] text-gray-400 mt-2">Raga: Nattai</p>
+                </div>
+                <button onclick="playVideo('GwAFM1-G1XP')" class="w-full bg-stone-900 text-white py-3 rounded-xl font-bold hover:bg-orange-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Listen
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal for Video Player -->
+    <div id="videoModal" class="modal">
+        <div class="flex flex-col items-center justify-center h-full p-4">
+            <button onclick="closeVideo()" class="text-white mb-6 self-center md:self-end text-lg font-bold flex items-center gap-2 border border-white/30 px-4 py-1 rounded-full hover:bg-white/10">
+                <span>✕</span> Close Player
+            </button>
+            <div class="w-full max-w-5xl aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+                <iframe id="youtubePlayer" class="w-full h-full" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="mt-8 text-white/60 text-sm italic">Playing Official Recording</div>
+        </div>
+    </div>
+
+    <!-- Script for Modal Logic -->
+    <script>
+        const modal = document.getElementById("videoModal");
+        const player = document.getElementById("youtubePlayer");
+
+        function playVideo(videoId) {
+            player.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // Disable scrolling
+        }
+
+        function closeVideo() {
+            modal.style.display = "none";
+            player.src = ""; // Stops music
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) { closeVideo(); }
+        }
+    </script>
+
+    <footer class="bg-orange-950 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h5 class="text-2xl font-bold mb-4">Arunagirinathar's Thiruppugazh</h5>
+            <p class="text-orange-200/60 text-sm max-w-lg mx-auto leading-loose">
+                This project is a tribute to the rhythmic mastery of the Thiruppugazh hymns. All rights to the audio remain with the original creators and music labels.
+            </p>
+            <div class="mt-12 pt-12 border-t border-white/10 text-xs text-white/30">
+                &copy; 2024 Thiruppugazh Digital Initiative.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
