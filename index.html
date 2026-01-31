@@ -348,10 +348,8 @@
             }
         };
 
-        // Recording variables
-        let mediaRecorder;
-        let audioChunks = [];
-        let currentRecordingSong = null;
+        // Recording variables - track per song
+        const recordingState = new Map(); // Map of songId -> {mediaRecorder, audioChunks}
 
         // Search functionality
         const searchInput = document.getElementById('searchInput');
@@ -390,9 +388,9 @@
                 voiceSearchBtn.classList.remove('listening');
             };
             
-            recognition.onerror = function() {
+            recognition.onerror = function(event) {
                 voiceSearchBtn.classList.remove('listening');
-                alert('Voice search error. Please try again.');
+                alert('Voice search error: ' + (event.error || 'Unknown error') + '. Please try again.');
             };
             
             recognition.onend = function() {
@@ -452,15 +450,24 @@
         // Start recording
         async function startRecording(songId) {
             try {
+                // Stop any existing recording for this song
+                if (recordingState.has(songId)) {
+                    const state = recordingState.get(songId);
+                    if (state.mediaRecorder && state.mediaRecorder.state === 'recording') {
+                        state.mediaRecorder.stop();
+                        state.mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                    }
+                }
+                
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                mediaRecorder = new MediaRecorder(stream);
-                audioChunks = [];
-                currentRecordingSong = songId;
+                const mediaRecorder = new MediaRecorder(stream);
+                const audioChunks = [];
                 
                 mediaRecorder.ondataavailable = function(event) {
                     audioChunks.push(event.data);
                 };
                 
+                recordingState.set(songId, { mediaRecorder, audioChunks });
                 mediaRecorder.start();
                 alert('Recording started! Sing along with the lyrics.');
             } catch (error) {
@@ -470,27 +477,43 @@
 
         // Stop recording
         function stopRecording(songId) {
-            if (mediaRecorder && mediaRecorder.state === 'recording') {
-                mediaRecorder.stop();
-                mediaRecorder.stream.getTracks().forEach(track => track.stop());
+            if (!recordingState.has(songId)) {
+                alert('No active recording for this song.');
+                return;
+            }
+            
+            const state = recordingState.get(songId);
+            if (state.mediaRecorder && state.mediaRecorder.state === 'recording') {
+                state.mediaRecorder.stop();
+                state.mediaRecorder.stream.getTracks().forEach(track => track.stop());
                 alert('Recording stopped! Click Download to save your recording.');
             } else {
-                alert('No active recording.');
+                alert('No active recording for this song.');
             }
         }
 
         // Download recording
         function downloadRecording(songId) {
-            if (audioChunks.length === 0) {
-                alert('No recording available. Please record first.');
+            if (!recordingState.has(songId)) {
+                alert('No recording available for this song. Please record first.');
                 return;
             }
             
-            const audioBlob = new Blob(audioChunks, { type: 'audio/mpeg' });
+            const state = recordingState.get(songId);
+            if (state.audioChunks.length === 0) {
+                alert('No recording available for this song. Please record first.');
+                return;
+            }
+            
+            // Determine MIME type and extension
+            const mimeType = state.mediaRecorder.mimeType || 'audio/webm';
+            const extension = mimeType.includes('webm') ? 'webm' : (mimeType.includes('ogg') ? 'ogg' : 'webm');
+            
+            const audioBlob = new Blob(state.audioChunks, { type: mimeType });
             const audioUrl = URL.createObjectURL(audioBlob);
             const a = document.createElement('a');
             a.href = audioUrl;
-            a.download = `Thiruppugazh_Song_${songId}_${new Date().getTime()}.mp3`;
+            a.download = `Thiruppugazh_Song_${songId}_${new Date().getTime()}.${extension}`;
             a.click();
             URL.revokeObjectURL(audioUrl);
         }
