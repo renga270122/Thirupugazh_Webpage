@@ -390,7 +390,15 @@
             
             recognition.onerror = function(event) {
                 voiceSearchBtn.classList.remove('listening');
-                alert('Voice search error: ' + (event.error || 'Unknown error') + '. Please try again.');
+                const errorMessages = {
+                    'no-speech': 'No speech detected. Please try again.',
+                    'audio-capture': 'Microphone not available. Please check your microphone.',
+                    'not-allowed': 'Microphone access denied. Please allow microphone access.',
+                    'network': 'Network error. Please check your internet connection.',
+                    'aborted': 'Voice search was aborted.'
+                };
+                const message = errorMessages[event.error] || 'Voice search error: ' + event.error;
+                alert(message + ' Please try again.');
             };
             
             recognition.onend = function() {
@@ -414,31 +422,36 @@
         // Show lyrics function
         function showLyrics(songId, language) {
             const lyrics = lyricsData[songId];
-            if (lyrics && lyrics[language]) {
-                const modal = document.createElement('div');
-                modal.className = 'fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4';
-                modal.innerHTML = `
-                    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[80vh] overflow-y-auto p-8">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-2xl font-bold ${language === 'tamil' ? 'tamil-font' : ''}">
-                                ${language === 'tamil' ? 'தமிழ் பாடல் வரிகள்' : 'Lyrics in English'}
-                            </h3>
-                            <button onclick="this.parentElement.parentElement.parentElement.remove()" class="text-3xl text-gray-500 hover:text-gray-800">&times;</button>
-                        </div>
-                        <div class="whitespace-pre-wrap ${language === 'tamil' ? 'tamil-font text-lg' : 'text-base'} leading-relaxed">
-                            ${lyrics[language]}
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(modal);
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        modal.remove();
-                    }
-                });
-            } else {
+            if (!lyrics) {
                 alert('Lyrics not available for this song.');
+                return;
             }
+            if (!lyrics[language]) {
+                alert(`${language === 'tamil' ? 'Tamil' : 'English'} lyrics not available for this song.`);
+                return;
+            }
+            
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4';
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[80vh] overflow-y-auto p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold ${language === 'tamil' ? 'tamil-font' : ''}">
+                            ${language === 'tamil' ? 'தமிழ் பாடல் வரிகள்' : 'Lyrics in English'}
+                        </h3>
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" class="text-3xl text-gray-500 hover:text-gray-800">&times;</button>
+                    </div>
+                    <div class="whitespace-pre-wrap ${language === 'tamil' ? 'tamil-font text-lg' : 'text-base'} leading-relaxed">
+                        ${lyrics[language]}
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
         }
 
         // Toggle record controls
@@ -450,13 +463,14 @@
         // Start recording
         async function startRecording(songId) {
             try {
-                // Stop any existing recording for this song
+                // Stop and clear any existing recording for this song
                 if (recordingState.has(songId)) {
                     const state = recordingState.get(songId);
                     if (state.mediaRecorder && state.mediaRecorder.state === 'recording') {
                         state.mediaRecorder.stop();
                         state.mediaRecorder.stream.getTracks().forEach(track => track.stop());
                     }
+                    recordingState.delete(songId);
                 }
                 
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -505,6 +519,10 @@
                 return;
             }
             
+            // Get song name from the card
+            const songCard = document.querySelector(`[data-song-number="${songId}"]`);
+            const songName = songCard ? songCard.getAttribute('data-song-name').replace(/\s+/g, '_') : 'Song';
+            
             // Determine MIME type and extension
             const mimeType = state.mediaRecorder.mimeType || 'audio/webm';
             const extension = mimeType.includes('webm') ? 'webm' : (mimeType.includes('ogg') ? 'ogg' : 'webm');
@@ -513,7 +531,7 @@
             const audioUrl = URL.createObjectURL(audioBlob);
             const a = document.createElement('a');
             a.href = audioUrl;
-            a.download = `Thiruppugazh_Song_${songId}_${new Date().getTime()}.${extension}`;
+            a.download = `Thiruppugazh_${songName}_${new Date().getTime()}.${extension}`;
             a.click();
             URL.revokeObjectURL(audioUrl);
         }
