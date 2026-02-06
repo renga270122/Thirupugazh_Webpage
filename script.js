@@ -1,4 +1,8 @@
 // Thirupugazh songs data categorized by places
+// Instructions: Add complete lyrics from authorized sources
+// English = Transliteration in Roman script (NOT translation)
+// Example: முருகா = Murugaa, வேல் = Vel
+
 const thirupugazhSongs = [
     // Pazhani (பழனி)
     {
@@ -7,26 +11,11 @@ const thirupugazhSongs = [
         nameEnglish: "Thanathana Thathanaa",
         place: "Pazhani",
         placeTamil: "பழனி",
-        tamilLyrics: `தனதான தத்தனா தந்ததன தத்தனா
-தனதான தத்தனா தந்ததன தத்தனா
-
-முருகா முருகா முருகா முருகா
-அருளுக அருளுக அருளுக அருளுக
-
-பழனி மலை மேல் வீற்றிருக்கும் பெருமாளே
-அழகு மிகு குமரேசா வாழ்த்துகிறேன்
-
-(Add complete lyrics here)`,
-        englishLyrics: `Thanathana Thathanaa Thanthathana Thathanaa
-Thanathana Thathanaa Thanthathana Thathanaa
-
-Murugaa Murugaa Murugaa Murugaa
-Aruluka Aruluka Aruluka Aruluka
-
-Pazhani malai mel veetrirukkum perumale
-Azhagu migu kumaresa vaazhthugiren
-
-(Add complete transliteration here)`
+        tamilLyrics: `[Please add complete Tamil lyrics here from authorized source like:
+- www.kaumaram.com
+- www.thirupugazh.org
+- Published books]`,
+        englishLyrics: `[Please add complete transliteration here]`
     },
     {
         number: 2,
