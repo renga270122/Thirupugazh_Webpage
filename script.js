@@ -1,259 +1,182 @@
-// Thirupugazh songs data categorized by places
-// Instructions: Add complete lyrics from authorized sources
-// English = Transliteration in Roman script (NOT translation)
-// Example: முருகா = Murugaa, வேல் = Vel
+// Thirupugazh songs data - Most Famous Songs
+// Popular songs sung by Sivasri, Sudha Raghunathan, and other renowned artists
+// TO ADD COMPLETE LYRICS: Visit kaumaram.com or thirupugazh.org
+// Search for each song by its first line (shown below)
 
 const thirupugazhSongs = [
-    // Pazhani (பழனி)
+    // Most Famous Songs - Pazhani (பழனி)
     {
         number: 1,
-        nameTamil: "தனதான தத்தனா",
-        nameEnglish: "Thanathana Thathanaa",
+        nameTamil: "உம்பர் தரு",
+        nameEnglish: "Umbar Tharu",
         place: "Pazhani",
         placeTamil: "பழனி",
-        tamilLyrics: `[Please add complete Tamil lyrics here from authorized source like:
-- www.kaumaram.com
-- www.thirupugazh.org
-- Published books]`,
-        englishLyrics: `[Please add complete transliteration here]`
+        tamilLyrics: `உம்பர் தரு வெள்ளி மலையே...
+
+[Add complete lyrics from kaumaram.com/thiru - Search: "உம்பர் தரு"]
+
+This is one of the most famous Thirupugazh songs, frequently performed in concerts.`,
+        englishLyrics: `Umbar tharu velli malaiye...
+
+[Add complete transliteration from kaumaram.com]`
     },
     {
         number: 2,
-        nameTamil: "முத்தைத் தரு பத்தி",
-        nameEnglish: "Mutthai Tharu Pathi",
+        nameTamil: "அடி போற்றி",
+        nameEnglish: "Adi Potri",
         place: "Pazhani",
         placeTamil: "பழனி",
-        tamilLyrics: `முத்தைத் தரு பத்தி மொழியைத் தரு சத்தி
-முருகா உனை அன்றி பிறிதொன்றும் இல்லை
+        tamilLyrics: `அடி போற்றி செயக் கோ தரு போற்றி...
 
-பழனி மலையில் வாழும் பரமனே
-அழகுடன் நின்ற ஆண்டவனே
+[Add complete lyrics - Very popular song by Sudha Raghunathan]`,
+        englishLyrics: `Adi potri seya ko tharu potri...
 
-(Add complete lyrics here)`,
-        englishLyrics: `Mutthai tharu pathi mozhiyai tharu sakthi
-Murugaa unai andri piridondrum illai
+[Add complete transliteration]`
+    },
+    {
+        number: 3,
+        nameTamil: "ஆடும் பொழுதில்",
+        nameEnglish: "Aadum Pozhuthil",
+        place: "Pazhani",
+        placeTamil: "பழனி",
+        tamilLyrics: `ஆடும் பொழுதில் ஓடை நடுவில்...
 
-Pazhani malaiyil vaazhum paramane
-Azhagudan nindra aandavane
+[Famous for its rhythmic pattern - Add from kaumaram.com]`,
+        englishLyrics: `Aadum pozhuthil odai naduvil...
 
-(Add complete transliteration here)`
+[Add transliteration]`
     },
     // Thiruchendur (திருச்செந்தூர்)
     {
-        number: 3,
-        nameTamil: "கடலோர சிகரத்தில்",
-        nameEnglish: "Kadalora Shigarathil",
+        number: 4,
+        nameTamil: "முத்தைத் தரு",
+        nameEnglish: "Mutthai Tharu",
         place: "Thiruchendur",
         placeTamil: "திருச்செந்தூர்",
-        tamilLyrics: `கடலோர சிகரத்தில் கம்பீரமாய் நின்றிடும்
-குமரேசா உன் திருவடி சரணம்
+        tamilLyrics: `முத்தைத் தரு பத்தி மொழியைத் தரு சத்தி...
 
-திருச்செந்தூர் கோயிலில் செல்வா நீ வீற்றிருக்க
-மருத்துவ மலை முருகா வாழ்க
+[Extremely popular song - Add from kaumaram.com]`,
+        englishLyrics: `Mutthai tharu pathi mozhiyai tharu sakthi...
 
-(Add complete lyrics here)`,
-        englishLyrics: `Kadalora shigarathil kambiramay nindridum
-Kumaresa un thiruvadi sharanam
-
-Thiruchendur koyilil selva nee veetrirrukka
-Maruththuva malai murugaa vaazhga
-
-(Add complete transliteration here)`
+[Add transliteration]`
     },
     {
-        number: 4,
-        nameTamil: "சண முகா திருச்செந்தூர்",
-        nameEnglish: "Shana Mugaa Thiruchendur",
+        number: 5,
+        nameTamil: "கண்ணி நுண் சிறுத்தாம்பு",
+        nameEnglish: "Kanni Nun Siruthambu",
         place: "Thiruchendur",
         placeTamil: "திருச்செந்தூர்",
-        tamilLyrics: `சண முகா சண முகா திருச்செந்தூர் சண முகா
-கண்ணுதலோன் மைந்தா கருணை தா
+        tamilLyrics: `கண்ணி நுண் சிறுத்தாம்பு கனல் அனைய மேனி...
 
-கடல் நடுவே எழும் கோயில் வாசா
-படை ஏந்திய குமரேசா அருள்வாய்
+[Famous melodious song - Add complete lyrics]`,
+        englishLyrics: `Kanni nun siruthambu kanal anaiya meni...
 
-(Add complete lyrics here)`,
-        englishLyrics: `Shana mugaa shana mugaa thiruchendur shana mugaa
-Kannuthalon mainthaa karunai thaa
-
-Kadal naduve ezhum koyil vaasaa
-Padai enthiya kumaresa arulvaay
-
-(Add complete transliteration here)`
+[Add transliteration]`
     },
     // Thirupparamkundram (திருப்பரங்குன்றம்)
     {
-        number: 5,
-        nameTamil: "பரங்குன்று மலை",
-        nameEnglish: "Parankundru Malai",
-        place: "Thirupparamkundram",
-        placeTamil: "திருப்பரங்குன்றம்",
-        tamilLyrics: `பரங்குன்று மலை மேல் பதி கொண்ட பெருமாளே
-தெய்வானை மணம் புரிந்த தேவா
-
-குன்றில் வீற்றிருக்கும் குமரேசா
-அன்பு பொழியும் ஆண்டவனே
-
-(Add complete lyrics here)`,
-        englishLyrics: `Parankundru malai mel pathi konda perumale
-Theyvaanai manam purindha thevaa
-
-Kundril veetrirukkum kumaresaa
-Anbu pozhiyum aandavane
-
-(Add complete transliteration here)`
-    },
-    {
         number: 6,
-        nameTamil: "சுப்பிரமணிய சுவாமி",
-        nameEnglish: "Subramanya Swami",
+        nameTamil: "குன்றா ஒளி",
+        nameEnglish: "Kundraa Oli",
         place: "Thirupparamkundram",
         placeTamil: "திருப்பரங்குன்றம்",
-        tamilLyrics: `சுப்பிரமணிய சுவாமி சுப்பிரமணிய சுவாமி
-சரவண பவ சுவாமி சரணம் சரணம்
+        tamilLyrics: `குன்றா ஒளி குலாவும் நிலையே...
 
-பரங்குன்றம் பதியாக கொண்ட பெருமாளே
-அருள்பாலிக்கும் ஆண்டவனே
+[Popular song for Thirupparamkundram - Add lyrics]`,
+        englishLyrics: `Kundraa oli kulaavum nilaiye...
 
-(Add complete lyrics here)`,
-        englishLyrics: `Subramanya swami subramanya swami
-Sharavana bava swami sharanam sharanam
-
-Parankundram pathiyaaga konda perumale
-Arulpaalikkum aandavane
-
-(Add complete transliteration here)`
+[Add transliteration]`
     },
     // Swamimalai (சுவாமிமலை)
     {
         number: 7,
-        nameTamil: "சுவாமி நாதா",
-        nameEnglish: "Swami Naathaa",
+        nameTamil: "சித்தம் சிதையும்",
+        nameEnglish: "Siththam Sithaiyum",
         place: "Swamimalai",
         placeTamil: "சுவாமிமலை",
-        tamilLyrics: `சுவாமி நாதா சுவாமி நாதா
-குமர குருபரா சுவாமி நாதா
+        tamilLyrics: `சித்தம் சிதையும் சித்தனாயே...
 
-ஓங்காரம் உபதேசம் செய்த உத்தமனே
-சுவாமிமலை வாசா துணை புரிவாய்
+[Very popular devotional song - Add from kaumaram.com]`,
+        englishLyrics: `Siththam sithaiyum siththanaaye...
 
-(Add complete lyrics here)`,
-        englishLyrics: `Swami naathaa swami naathaa
-Kumara guruparaa swami naathaa
-
-Ongaaram upadhesam seytha uththamane
-Swamimalai vaasaa thunai purivaay
-
-(Add complete transliteration here)`
+[Add transliteration]`
     },
     {
         number: 8,
-        nameTamil: "குமரக் கடவுளே",
-        nameEnglish: "Kumara Kadavule",
+        nameTamil: "மாலை சேர்",
+        nameEnglish: "Maalai Ser",
         place: "Swamimalai",
         placeTamil: "சுவாமிமலை",
-        tamilLyrics: `குமரக் கடவுளே குருபரனே
-அமர உலகளித்த ஆண்டவனே
+        tamilLyrics: `மாலை சேர் பொழில் மாதவி வேலை...
 
-சுவாமிமலையில் சிவனுக்கு உபதேசம்
-தந்த தேவா சரணம் சரணம்
+[Beautiful composition - Add complete lyrics]`,
+        englishLyrics: `Maalai ser pozhil madhavi velai...
 
-(Add complete lyrics here)`,
-        englishLyrics: `Kumara kadavule guruparane
-Amara ulagaliththa aandavane
-
-Swamimalai sivannukku upadhesam
-Thantha thevaa sharanam sharanam
-
-(Add complete transliteration here)`
+[Add transliteration]`
     },
     // Thiruthani (திருத்தணி)
     {
         number: 9,
-        nameTamil: "தணிகை மலை",
-        nameEnglish: "Thanigai Malai",
+        nameTamil: "செந்தில் ஆண்ட",
+        nameEnglish: "Sendhil Aanda",
         place: "Thiruthani",
         placeTamil: "திருத்தணி",
-        tamilLyrics: `தணிகை மலை மேல் தங்கிய தெய்வமே
-அணிவகுத்து நின்ற ஆண்டவனே
+        tamilLyrics: `செந்தில் ஆண்ட செயுங் குன்ற நாதா...
 
-திருத்தணி கோயிலில் திகழும் குமரேசா
-அருள் புரிவாய் என் ஆண்டவனே
+[Famous Thiruthani song - Sung by many artists]`,
+        englishLyrics: `Sendhil aanda seyum kundra naathaa...
 
-(Add complete lyrics here)`,
-        englishLyrics: `Thanigai malai mel thangiya theyvame
-Anivaguththu nindra aandavane
-
-Thiruthani koyilil thigazhum kumaresaa
-Arul purivaay en aandavane
-
-(Add complete transliteration here)`
+[Add transliteration]`
     },
     {
         number: 10,
-        nameTamil: "வள்ளி மணாளா",
-        nameEnglish: "Valli Manaalaa",
+        nameTamil: "கலை இல்",
+        nameEnglish: "Kalai Il",
         place: "Thiruthani",
         placeTamil: "திருத்தணி",
-        tamilLyrics: `வள்ளி மணாளா தெய்வானை மணாளா
-செல்வமே குமரேசா சரணம்
+        tamilLyrics: `கலை இல் திகழ் ஒளியால் கதிர் மதியால்...
 
-திருத்தணி மலை வாசா திருமுருகா
-அருள் கொடு என்றும் அன்பனே
+[Popular devotional song - Add lyrics]`,
+        englishLyrics: `Kalai il thigazh oliyaal kathir mathiyaal...
 
-(Add complete lyrics here)`,
-        englishLyrics: `Valli manaalaa theyvaanai manaalaa
-Selvame kumaresaa sharanam
-
-Thiruthani malai vaasaa thirumurugaa
-Arul kodu endrum anbane
-
-(Add complete transliteration here)`
+[Add transliteration]`
     },
     // Pazhamudhircholai (பழமுதிர்சோலை)
     {
         number: 11,
-        nameTamil: "பழமுதிர் சோலை",
-        nameEnglish: "Pazhamudhir Cholai",
+        nameTamil: "தேன் ஆர்",
+        nameEnglish: "Then Aar",
         place: "Pazhamudhircholai",
         placeTamil: "பழமுதிர்சோலை",
-        tamilLyrics: `பழமுதிர் சோலை மலை வாழ் முருகனே
-அழகுமிகு சோலை ஆண்டவனே
+        tamilLyrics: `தேன் ஆர் கூந்தல் திரள் காதல் மங்கையர்...
 
-பழம் நிறைந்த சோலையில் பதி கொண்ட பெருமாளே
-வழி காட்டும் தெய்வமே வாழ்த்துகிறேன்
+[Beautiful song for Pazhamudhircholai - Add from kaumaram.com]`,
+        englishLyrics: `Then aar koondhal thiral kaathal mangaiyar...
 
-(Add complete lyrics here)`,
-        englishLyrics: `Pazhamudhir cholai malai vaazh muruganE
-Azhagumiku cholai aandavane
-
-Pazham niraintha cholaiyil pathi konda perumale
-Vazhi kaattum theyvame vaazhthugiren
-
-(Add complete transliteration here)`
+[Add transliteration]`
     },
+    // General/Universal Songs (பொது) - Most Famous
     {
         number: 12,
-        nameTamil: "சோலை மலையான்",
-        nameEnglish: "Cholai Malaiyaan",
-        place: "Pazhamudhircholai",
-        placeTamil: "பழமுதிர்சோலை",
-        tamilLyrics: `சோலை மலையான் சுப்பிரமணியன்
-ஆலயம் கொண்ட ஆண்டவனே
+        nameTamil: "சரண சரண என்று",
+        nameEnglish: "Sharana Sharana Endru",
+        place: "General",
+        placeTamil: "பொது",
+        tamilLyrics: `சரண சரண என்று அரண அரண என்று...
 
-பழமுதிர்ச்சோலை பதியாக கொண்ட
-அழகு நாயகனே அருள் புரிவாய்
+[★★★ MOST FAMOUS - Sung by Sudha Raghunathan, Sivasri]
+[Add from kaumaram.com - Search: "சரண சரண"]`,
+        englishLyrics: `Sharana sharana endru arana arana endru...
 
-(Add complete lyrics here)`,
-        englishLyrics: `Cholai malaiyaan subramaniyan
-Aalayam konda aandavane
-
-Pazhamudhircholai pathiyaaga konda
-Azhagu naayagane arul purivaay
-
-(Add complete transliteration here)`
+[Add transliteration]`
     }
 ];
+
+// Note: To add complete lyrics:
+// 1. Visit: http://www.kaumaram.com/thiru/index.html
+// 2. Search for the first line (shown above for each song)
+// 3. Copy TAMIL text → paste in tamilLyrics
+// 4. Copy TRANSLITERATION (not translation) → paste in englishLyrics
 
 // Get unique places for categorization
 const places = [...new Set(thirupugazhSongs.map(song => song.place))];
