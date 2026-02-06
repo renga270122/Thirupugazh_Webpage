@@ -1,9 +1,333 @@
-// Thirupugazh songs data - Most Famous Songs
-// Popular songs sung by Sivasri, Sudha Raghunathan, and other renowned artists
-// TO ADD COMPLETE LYRICS: Visit kaumaram.com or thirupugazh.org
-// Search for each song by its first line (shown below)
+// MURUGAN DEVOTIONAL SONGS DATABASE
+// A comprehensive collection for all Muruga Bhakts
+// Categories: Thirupugazh, Kavasam, Anubhoodhi, Classical, Film Songs
 
-const thirupugazhSongs = [
+const muruganSongs = [
+    // ========== SACRED TEXTS (பாராயணங்கள்) ==========
+    
+    // Kanda Sashti Kavasam (கந்த சஷ்டி கவசம்)
+    {
+        number: 1,
+        nameTamil: "கந்த சஷ்டி கவசம்",
+        nameEnglish: "Kanda Sashti Kavasam",
+        place: "Sacred Text",
+        placeTamil: "பாராயணம்",
+        category: "Kavasam",
+        artist: "Devaraya Swamigal",
+        youtubeId: "dQw4w9WgXcQ", // Replace with actual video ID
+        duration: "15:30",
+        tamilLyrics: `[Add complete Kanda Sashti Kavasam - 244 lines
+Starts with: சுத்தமாய் அருள்வாய் துணைவாய் முருகா...]
+
+Famous recitation by: Sirkazhi Govindarajan, Sulamangalam Sisters`,
+        englishLyrics: `[Add complete transliteration
+Suththamaay arulvaay thunaivay murugaa...]`,
+        contributeUrl: "https://forms.gle/yourform" // For users to contribute lyrics
+    },
+    
+    // Kanda Guru Kavasam (கந்த குரு கவசம்)
+    {
+        number: 2,
+        nameTamil: "கந்த குரு கவசம்",
+        nameEnglish: "Kanda Guru Kavasam",
+        place: "Sacred Text",
+        placeTamil: "பாராயணம்",
+        category: "Kavasam",
+        artist: "Saint Arunagirinathar",
+        tamilLyrics: `[Add complete Kanda Guru Kavasam
+Shorter protective hymn, powerful for obstacles]`,
+        englishLyrics: `[Add transliteration]`
+    },
+    
+    // Kandhar Anubhoodhi (கந்தர் அநுபூதி)
+    {
+        number: 3,
+        nameTamil: "கந்தர் அநுபூதி",
+        nameEnglish: "Kandhar Anubhoodhi",
+        place: "Sacred Text",
+        placeTamil: "பாராயணம்",
+        category: "Anubhoodhi",
+        artist: "Saint Arunagirinathar",
+        tamilLyrics: `[Add complete Kandhar Anubhoodhi - 51 verses
+Starts with: துணையென நினைத்தடிதொழுது துணிவுடன் அகத்துருகி...
+One of the most profound mystical poems to Lord Murugan]`,
+        englishLyrics: `[Add transliteration
+Thunaiyena ninaiththadi thozhuthu thunivudan agaththurugi...]`
+    },
+    
+    // Vel Maral (வேல் மறல்)
+    {
+        number: 4,
+        nameTamil: "வேல் மறல்",
+        nameEnglish: "Vel Maral",
+        place: "Sacred Text",
+        placeTamil: "பாராயணம்",
+        category: "Maral",
+        artist: "Kumaraguruparar",
+        tamilLyrics: `[Add complete Vel Maral
+Baby talk to Lord Murugan's Vel (Spear)
+Very sweet and playful composition]`,
+        englishLyrics: `[Add transliteration]`
+    },
+
+    // ========== THIRUPUGAZH (திருப்புகழ்) ==========
+    
+    {
+        number: 5,
+        nameTamil: "உம்பர் தரு வெள்ளி மலையே",
+        nameEnglish: "Umbar Tharu Velli Malaiye",
+        place: "Pazhani",
+        placeTamil: "பழனி",
+        category: "Thirupugazh",
+        artist: "Arunagirinathar",
+        tamilLyrics: `[Add from kaumaram.com - One of the most melodious]`,
+        englishLyrics: `[Add transliteration]`
+    },
+    
+    {
+        number: 6,
+        nameTamil: "அடி போற்றி",
+        nameEnglish: "Adi Potri",
+        place: "Pazhani",
+        placeTamil: "பழனி",
+        category: "Thirupugazh",
+        artist: "Arunagirinathar",
+        tamilLyrics: `[Famous by Sudha Raghunathan]`,
+        englishLyrics: `[Add transliteration]`
+    },
+    
+    {
+        number: 7,
+        nameTamil: "முத்தைத் தரு பத்தி",
+        nameEnglish: "Mutthai Tharu Pathi",
+        place: "Thiruchendur",
+        placeTamil: "திருச்செந்தூர்",
+        category: "Thirupugazh",
+        artist: "Arunagirinathar",
+        tamilLyrics: `[Extremely popular - Must have!]`,
+        englishLyrics: `[Add transliteration]`
+    },
+    
+    {
+        number: 8,
+        nameTamil: "சரண சரண என்று",
+        nameEnglish: "Sharana Sharana Endru",
+        place: "General",
+        placeTamil: "பொது",
+        category: "Thirupugazh",
+        artist: "Arunagirinathar",
+        tamilLyrics: `[★★★ MOST FAMOUS Thirupugazh ever!]`,
+        englishLyrics: `[Add transliteration]`
+    },
+    
+    // ========== CLASSICAL DEVOTIONAL (TMS, Seerkazhi, etc.) ==========
+    
+    {
+        number: 9,
+        nameTamil: "குன்றினில் மேல் ஓர் கொடி",
+        nameEnglish: "Kundrinil Mel Or Kodi",
+        place: "Devotional",
+        placeTamil: "பக்தி பாடல்",
+        category: "Classical",
+        artist: "T.M. Soundararajan",
+        tamilLyrics: `[Add lyrics - Famous TMS Murugan song about flag on hill]`,
+        englishLyrics: `[Kundrinil mel or kodi...]`
+    },
+    
+    {
+        number: 10,
+        nameTamil: "ஆறுமுக பாவலரே",
+        nameEnglish: "Aarumuga Paavalarae",
+        place: "Devotional",
+        placeTamil: "பக்தி பாடல்",
+        category: "Classical",
+        artist: "Seerkazhi Govindarajan",
+        tamilLyrics: `[Famous Seerkazhi song - Add complete lyrics]`,
+        englishLyrics: `[Aarumuga paavalarae...]`
+    },
+    
+    {
+        number: 11,
+        nameTamil: "முருகா முருகா",
+        nameEnglish: "Murugaa Murugaa",
+        place: "Devotional",
+        placeTamil: "பக்தி பாடல்",
+        category: "Classical",
+        artist: "Various Artists",
+        tamilLyrics: `[Simple powerful chant - Very popular]`,
+        englishLyrics: `[Murugaa murugaa...]`
+    },
+    
+    {
+        number: 12,
+        nameTamil: "பாலகுமாரா வா வா வா",
+        nameEnglish: "Bala Kumara Vaa Vaa Vaa",
+        place: "Devotional",
+        placeTamil: "பக்தி பாடல்",
+        category: "Classical",
+        artist: "Various Artists",
+        tamilLyrics: `[Sweet children's song - Add lyrics]`,
+        englishLyrics: `[Bala kumara vaa vaa vaa...]`
+    },
+    
+    {
+        number: 13,
+        nameTamil: "வேலன் தானே வேலன்",
+        nameEnglish: "Velan Thane Velan",
+        place: "Devotional",
+        placeTamil: "பக்தி பாடல்",
+        category: "Classical",
+        artist: "T.M. Soundararajan",
+        tamilLyrics: `[Famous TMS song - Add from devotional albums]`,
+        englishLyrics: `[Velan thane velan...]`
+    },
+
+    // ========== FILM SONGS (திரைப்பாடல்கள்) ==========
+    
+    {
+        number: 14,
+        nameTamil: "வெற்றி வேல் முருகனுக்கு அரோகரா",
+        nameEnglish: "Vetri Vel Muruganukku Arohara",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "T.M. Soundararajan",
+        movie: "Kandhan Karunai",
+        tamilLyrics: `[Most iconic Murugan film song ever! - From Kandhan Karunai (1967)
+Singer: TMS, Music: K.V. Mahadevan]`,
+        englishLyrics: `[Vetri vel muruganukku arohara...]`
+    },
+    
+    {
+        number: 15,
+        nameTamil: "வீர வேல் முருகா வீர வேல் முருகா",
+        nameEnglish: "Veera Vel Muruga",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "K.J. Yesudas & S.P. Balasubrahmanyam",
+        movie: "Padai Veetu Amman",
+        tamilLyrics: `[Super hit duet - Add lyrics]`,
+        englishLyrics: `[Veera vel muruga...]`
+    },
+    
+    {
+        number: 16,
+        nameTamil: "கந்தன் கருணை",
+        nameEnglish: "Kandhan Karunai",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "T.M. Soundararajan",
+        movie: "Kandhan Karunai",
+        tamilLyrics: `[Title song from classic film]`,
+        englishLyrics: `[Kandhan karunai...]`
+    },
+    
+    {
+        number: 17,
+        nameTamil: "தனி முருகா தனி முருகா",
+        nameEnglish: "Thani Muruga Thani Muruga",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "T.M. Soundararajan",
+        movie: "Azhagar Malai",
+        tamilLyrics: `[Famous TMS hit - Add complete lyrics]`,
+        englishLyrics: `[Thani muruga thani muruga...]`
+    },
+    
+    {
+        number: 18,
+        nameTamil: "குக்கு குக்கு கூவும் மயிலே",
+        nameEnglish: "Kukku Kukku Koovum Mayile",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "S. Janaki",
+        movie: "Kurinji Malar",
+        tamilLyrics: `[Sweet song about Murugan's peacock]`,
+        englishLyrics: `[Kukku kukku koovum mayile...]`
+    },
+    
+    {
+        number: 19,
+        nameTamil: "முருகா முருகா வாராய் என்று",
+        nameEnglish: "Muruga Muruga Vaaraay Endru",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "P. Susheela",
+        movie: "Thiruvilayadal",
+        tamilLyrics: `[Classic film song - Add lyrics]`,
+        englishLyrics: `[Muruga muruga vaaraay endru...]`
+    },
+    
+    {
+        number: 20,
+        nameTamil: "பழனி ஆண்டவன் பாலக்காட்டு முருகன்",
+        nameEnglish: "Pazhani Aandavan Palakkattu Murugan",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "T.M. Soundararajan",
+        movie: "Bala Parikshai",
+        tamilLyrics: `[TMS devotional film song - Add lyrics]`,
+        englishLyrics: `[Pazhani aandavan...]`
+    },
+    
+    {
+        number: 21,
+        nameTamil: "ஆறு மயில் ஆடுது",
+        nameEnglish: "Aaru Mayil Aaduthu",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "Various",
+        movie: "Multiple Films",
+        tamilLyrics: `[Popular song about six peacocks - Add lyrics]`,
+        englishLyrics: `[Aaru mayil aaduthu...]`
+    },
+    
+    {
+        number: 22,
+        nameTamil: "வள்ளி கல்யாணம்",
+        nameEnglish: "Valli Kalyanam",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "Various Artists",
+        movie: "Valli",
+        tamilLyrics: `[Songs about Murugan-Valli wedding]`,
+        englishLyrics: `[Valli kalyanam...]`
+    },
+    
+    {
+        number: 23,
+        nameTamil: "குமரக் கடவுளே",
+        nameEnglish: "Kumara Kadavule",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "S.P. Balasubrahmanyam",
+        movie: "Various",
+        tamilLyrics: `[Modern devotional film song]`,
+        englishLyrics: `[Kumara kadavule...]`
+    },
+    
+    {
+        number: 24,
+        nameTamil: "திருச்செந்தூர் முருகனே",
+        nameEnglish: "Thiruchendur Murugane",
+        place: "Film Song",
+        placeTamil: "திரைப்பாடல்",
+        category: "Film",
+        artist: "Various Artists",
+        movie: "Multiple Films",
+        tamilLyrics: `[Famous Thiruchendur temple song]`,
+        englishLyrics: `[Thiruchendur murugane...]`
+    }
+];
     // Most Famous Songs - Pazhani (பழனி)
     {
         number: 1,
@@ -178,13 +502,15 @@ This is one of the most famous Thirupugazh songs, frequently performed in concer
 // 3. Copy TAMIL text → paste in tamilLyrics
 // 4. Copy TRANSLITERATION (not translation) → paste in englishLyrics
 
-// Get unique places for categorization
-const places = [...new Set(thirupugazhSongs.map(song => song.place))];
+// Get unique places and categories for filtering
+const places = [...new Set(muruganSongs.map(song => song.place))];
+const categories = [...new Set(muruganSongs.map(song => song.category))];
 
 // State management
 let currentFilter = 'all';
 let currentLanguage = 'both';
 let currentPlace = 'all';
+let currentCategory = 'all';
 
 // DOM Elements
 const searchInput = document.getElementById('searchInput');
@@ -198,6 +524,7 @@ const tamilLyrics = document.getElementById('tamilLyrics');
 const englishLyrics = document.getElementById('englishLyrics');
 const closeBtn = document.querySelector('.close-btn');
 const placesFilter = document.getElementById('placesFilter');
+const categoryFilter = document.getElementById('categoryFilter');
 
 // Initialize Web Speech API
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -212,9 +539,22 @@ if (SpeechRecognition) {
 
 // Initialize the page
 function init() {
+    createCategoryFilter();
     createPlacesFilter();
-    displaySongs(thirupugazhSongs);
+    displaySongs(muruganSongs);
     attachEventListeners();
+}
+
+// Create category filter dynamically
+function createCategoryFilter() {
+    const categoryHTML = `
+        <button class="category-btn active" data-category="all">All Categories</button>
+        <button class="category-btn" data-category="Kavasam">🛡️ Kavasam & Sacred Texts</button>
+        <button class="category-btn" data-category="Thirupugazh">🙏 Thirupugazh</button>
+        <button class="category-btn" data-category="Classical">🎵 Classical Devotional</button>
+        <button class="category-btn" data-category="Film">🎬 Film Songs</button>
+    `;
+    categoryFilter.innerHTML = categoryHTML;
 }
 
 // Create places filter dynamically
@@ -222,14 +562,14 @@ function createPlacesFilter() {
     const placesHTML = `
         <button class="place-btn active" data-place="all">All Places</button>
         ${places.map(place => {
-            const song = thirupugazhSongs.find(s => s.place === place);
+            const song = muruganSongs.find(s => s.place === place);
             return `<button class="place-btn" data-place="${place}">${song.placeTamil} - ${place}</button>`;
         }).join('')}
     `;
     placesFilter.innerHTML = placesHTML;
 }
 
-// Display songs in grid (categorized by place if needed)
+// Display songs in grid (categorized by place/category if needed)
 function displaySongs(songs) {
     if (songs.length === 0) {
         songsGrid.innerHTML = `
@@ -241,7 +581,48 @@ function displaySongs(songs) {
         return;
     }
 
-    if (currentPlace === 'all') {
+    if (currentPlace === 'all' && currentCategory === 'all') {
+        // Group by category first
+        const groupedByCategory = {};
+        songs.forEach(song => {
+            if (!groupedByCategory[song.category]) {
+                groupedByCategory[song.category] = [];
+            }
+            groupedByCategory[song.category].push(song);
+        });
+
+        let html = '';
+        Object.keys(groupedByCategory).forEach(category => {
+            const categorySongs = groupedByCategory[category];
+            const categoryEmoji = {
+                'Kavasam': '🛡️',
+                'Anubhoodhi': '📿',
+                'Maral': '💫',
+                'Thirupugazh': '🙏',
+                'Classical': '🎵',
+                'Film': '🎬'
+            };
+            
+            html += `
+                <div class="place-section">
+                    <h2 class="place-title">${categoryEmoji[category] || '🎶'} ${category} Songs</h2>
+                    <div class="songs-list">
+                        ${categorySongs.map(song => `
+                            <div class="song-card" data-song-id="${song.number}">
+                                <div class="song-number">Song #${song.number}</div>
+                                <div class="song-name-tamil">${song.nameTamil}</div>
+                                <div class="song-name-english">${song.nameEnglish}</div>
+                                ${song.artist ? `<div class="song-artist">🎤 ${song.artist}</div>` : ''}
+                                ${song.movie ? `<div class="song-movie">🎬 ${song.movie}</div>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        });
+
+        songsGrid.innerHTML = html;
+    } else if (currentPlace === 'all') {
         // Group by place
         const groupedByPlace = {};
         songs.forEach(song => {
@@ -299,16 +680,76 @@ function displaySongs(songs) {
 
 // Show lyrics modal
 function showLyrics(songNumber) {
-    const song = thirupugazhSongs.find(s => s.number === songNumber);
+    const song = muruganSongs.find(s => s.number === songNumber);
     if (!song) return;
 
     modalSongTitle.textContent = `${song.number}. ${song.nameTamil} - ${song.nameEnglish}`;
-    document.getElementById('modalPlace').textContent = `${song.placeTamil} (${song.place})`;
+    let placeInfo = `${song.placeTamil} (${song.place})`;
+    if (song.artist) placeInfo += ` • Artist: ${song.artist}`;
+    if (song.movie) placeInfo += ` • Film: ${song.movie}`;
+    if (song.duration) placeInfo += ` • Duration: ${song.duration}`;
+    document.getElementById('modalPlace').textContent = placeInfo;
     tamilLyrics.textContent = song.tamilLyrics;
     englishLyrics.textContent = song.englishLyrics;
 
+    // Setup audio player
+    const audioContainer = document.getElementById('audioPlayerContainer');
+    const playBtn = document.getElementById('playAudioBtn');
+    const contributeBtn = document.getElementById('contributeBtn');
+    const shareBtn = document.getElementById('shareBtn');
+    
+    if (song.youtubeId) {
+        playBtn.style.display = 'flex';
+        playBtn.onclick = () => toggleAudioPlayer(song.youtubeId);
+    } else {
+        playBtn.style.display = 'none';
+    }
+    
+    contributeBtn.onclick = () => {
+        const url = song.contributeUrl || 'https://github.com/renga270122/Thirupugazh_Webpage/issues';
+        window.open(url, '_blank');
+    };
+    
+    shareBtn.onclick = () => shareSong(song);
+    
+    // Hide audio player initially
+    audioContainer.style.display = 'none';
+
     updateLyricsDisplay();
     lyricsModal.classList.add('show');
+}
+
+// Toggle audio player
+function toggleAudioPlayer(youtubeId) {
+    const audioContainer = document.getElementById('audioPlayerContainer');
+    const youtubePlayer = document.getElementById('youtubePlayer');
+    
+    if (audioContainer.style.display === 'none') {
+        audioContainer.style.display = 'block';
+        youtubePlayer.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+    } else {
+        audioContainer.style.display = 'none';
+        youtubePlayer.src = '';
+    }
+}
+
+// Share song
+function shareSong(song) {
+    const shareData = {
+        title: `${song.nameTamil} - ${song.nameEnglish}`,
+        text: `Listen to this beautiful Murugan song: ${song.nameTamil}`,
+        url: window.location.href
+    };
+    
+    if (navigator.share) {
+        navigator.share(shareData).catch(err => console.log('Share failed:', err));
+    } else {
+        // Fallback - copy to clipboard
+        const text = `${shareData.title}\n${shareData.text}\n${shareData.url}`;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Link copied to clipboard!');
+        });
+    }
 }
 
 // Update lyrics display based on language selection
@@ -328,23 +769,33 @@ function searchSongs() {
     const query = searchInput.value.toLowerCase().trim();
     
     if (!query) {
-        const filtered = currentPlace === 'all' 
-            ? thirupugazhSongs 
-            : thirupugazhSongs.filter(s => s.place === currentPlace);
+        let filtered = muruganSongs;
+        if (currentCategory !== 'all') {
+            filtered = filtered.filter(s => s.category === currentCategory);
+        }
+        if (currentPlace !== 'all') {
+            filtered = filtered.filter(s => s.place === currentPlace);
+        }
         displaySongs(filtered);
         return;
     }
 
-    let filtered = thirupugazhSongs.filter(song => {
+    let filtered = muruganSongs.filter(song => {
         const numberMatch = song.number.toString() === query;
         const tamilMatch = song.nameTamil.toLowerCase().includes(query);
         const englishMatch = song.nameEnglish.toLowerCase().includes(query);
         const placeMatch = song.place.toLowerCase().includes(query);
         const placeTamilMatch = song.placeTamil.includes(query);
+        const artistMatch = song.artist && song.artist.toLowerCase().includes(query);
+        const movieMatch = song.movie && song.movie.toLowerCase().includes(query);
+        const categoryMatch = song.category && song.category.toLowerCase().includes(query);
         
-        return numberMatch || tamilMatch || englishMatch || placeMatch || placeTamilMatch;
+        return numberMatch || tamilMatch || englishMatch || placeMatch || placeTamilMatch || artistMatch || movieMatch || categoryMatch;
     });
 
+    if (currentCategory !== 'all') {
+        filtered = filtered.filter(s => s.category === currentCategory);
+    }
     if (currentPlace !== 'all') {
         filtered = filtered.filter(s => s.place === currentPlace);
     }
@@ -386,11 +837,32 @@ function startVoiceSearch() {
     };
 }
 
+// Filter by category
+function filterByCategory(category) {
+    currentCategory = category;
+    
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.category === category) {
+            btn.classList.add('active');
+        }
+    });
+
+    let filtered = muruganSongs;
+    if (category !== 'all') {
+        filtered = filtered.filter(s => s.category === category);
+    }
+    if (currentPlace !== 'all') {
+        filtered = filtered.filter(s => s.place === currentPlace);
+    }
+    
+    displaySongs(filtered);
+}
+
 // Filter by place
 function filterByPlace(place) {
     currentPlace = place;
     
-    // Update active place button
     document.querySelectorAll('.place-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.place === place) {
@@ -398,9 +870,13 @@ function filterByPlace(place) {
         }
     });
 
-    const filtered = place === 'all' 
-        ? thirupugazhSongs 
-        : thirupugazhSongs.filter(s => s.place === place);
+    let filtered = muruganSongs;
+    if (currentCategory !== 'all') {
+        filtered = filtered.filter(s => s.category === currentCategory);
+    }
+    if (place !== 'all') {
+        filtered = filtered.filter(s => s.place === place);
+    }
     
     displaySongs(filtered);
 }
@@ -422,6 +898,13 @@ function attachEventListeners() {
         voiceSearchBtn.style.display = 'none';
     }
 
+    // Category filter buttons
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterByCategory(btn.dataset.category);
+        });
+    });
+
     // Place filter buttons
     document.querySelectorAll('.place-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -440,13 +923,20 @@ function attachEventListeners() {
     });
 
     // Modal close
-    closeBtn.addEventListener('click', () => {
+    const closeModal = () => {
         lyricsModal.classList.remove('show');
-    });
+        // Stop audio when closing
+        const audioContainer = document.getElementById('audioPlayerContainer');
+        const youtubePlayer = document.getElementById('youtubePlayer');
+        audioContainer.style.display = 'none';
+        youtubePlayer.src = '';
+    };
+    
+    closeBtn.addEventListener('click', closeModal);
 
     lyricsModal.addEventListener('click', (e) => {
         if (e.target === lyricsModal) {
-            lyricsModal.classList.remove('show');
+            closeModal();
         }
     });
 
