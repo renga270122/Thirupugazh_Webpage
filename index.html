@@ -52,6 +52,9 @@
                     </svg>
                 </button>
                 <button id="searchBtn" class="search-btn">Search</button>
+                <button id="aiAssistantBtn" class="ai-btn" title="AI Lyrics Assistant">
+                    🤖 AI Assistant
+                </button>
             </div>
             <div id="voiceStatus" class="voice-status"></div>
         </div>
@@ -128,6 +131,63 @@
                 <div class="lyrics-container">
                     <div id="tamilLyrics" class="tamil-lyrics"></div>
                     <div id="englishLyrics" class="english-lyrics"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Assistant Chat Modal -->
+        <div id="aiChatModal" class="modal ai-modal">
+            <div class="modal-content ai-chat-content">
+                <div class="ai-chat-header">
+                    <h2>🤖 AI Lyrics Assistant</h2>
+                    <span class="close-btn" id="closeAiChat">&times;</span>
+                </div>
+                <div class="ai-info-banner">
+                    <p>🌟 Ask me to find lyrics for any Murugan song! Examples:</p>
+                    <div class="example-queries">
+                        <span class="example-chip">“Find Kanda Sashti Kavasam lyrics”</span>
+                        <span class="example-chip">“Add lyrics for Umbar Tharu”</span>
+                        <span class="example-chip">“Get Sharana Sharana transliteration”</span>
+                    </div>
+                </div>
+                <div class="ai-chat-messages" id="aiChatMessages">
+                    <div class="ai-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <p>Vanakkam! 🙏 I'm your AI assistant for Murugan devotional songs.</p>
+                            <p>I can help you:</p>
+                            <ul>
+                                <li>✅ Search for song lyrics online</li>
+                                <li>✅ Find Tamil and English transliteration</li>
+                                <li>✅ Get song information and history</li>
+                                <li>✅ Add lyrics to the website database</li>
+                            </ul>
+                            <p>Just ask me about any song! 🎵</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ai-chat-input-area">
+                    <input type="text" id="aiChatInput" placeholder="Ask me to find lyrics... (e.g., 'Find lyrics for Umbar Tharu')" />
+                    <button id="aiSendBtn" class="ai-send-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="ai-settings">
+                    <button class="settings-toggle" onclick="toggleAiSettings()">⚙️ Settings</button>
+                    <div class="ai-settings-panel" id="aiSettingsPanel" style="display:none;">
+                        <label>AI Provider:</label>
+                        <select id="aiProvider">
+                            <option value="demo">Demo Mode (Limited)</option>
+                            <option value="openai">OpenAI GPT</option>
+                            <option value="gemini">Google Gemini</option>
+                            <option value="claude">Anthropic Claude</option>
+                        </select>
+                        <label>API Key (Optional):</label>
+                        <input type="password" id="apiKey" placeholder="Enter your API key for full access" />
+                        <small>Your API key is stored locally and never sent to our servers</small>
+                    </div>
                 </div>
             </div>
         </div>

@@ -776,14 +776,360 @@ function attachEventListeners() {
 
     // ESC key to close modal
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lyricsModal.classList.contains('show')) {
-            lyricsModal.classList.remove('show');
+        if (e.key === 'Escape') {
+            if (lyricsModal.classList.contains('show')) {
+                lyricsModal.classList.remove('show');
+            }
+            if (document.getElementById('aiChatModal').classList.contains('show')) {
+                closeAiAssistant();
+            }
         }
     });
+
+    // AI Assistant button
+    const aiBtn = document.getElementById('aiAssistantBtn');
+    if (aiBtn) {
+        aiBtn.addEventListener('click', openAiAssistant);
+    }
+
+    // AI chat input
+    const aiChatInput = document.getElementById('aiChatInput');
+    if (aiChatInput) {
+        aiChatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendAiMessage();
+            }
+        });
+    }
+
+    // AI send button
+    const aiSendBtn = document.querySelector('.ai-send-btn');
+    if (aiSendBtn) {
+        aiSendBtn.addEventListener('click', sendAiMessage);
+    }
+
+    // AI modal close
+    const aiModalCloseBtn = document.querySelector('#aiChatModal .close-btn');
+    if (aiModalCloseBtn) {
+        aiModalCloseBtn.addEventListener('click', closeAiAssistant);
+    }
+
+    // AI settings toggle
+    const settingsBtn = document.querySelector('.settings-btn');
+    if (settingsBtn) {
+        settingsBtn.addEventListener('click', toggleAiSettings);
+    }
+
+    // Example query chips
+    document.querySelectorAll('.query-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+            document.getElementById('aiChatInput').value = chip.textContent;
+            sendAiMessage();
+        });
+    });
+
+    // Click outside AI modal to close
+    const aiModal = document.getElementById('aiChatModal');
+    if (aiModal) {
+        aiModal.addEventListener('click', (e) => {
+            if (e.target === aiModal) {
+                closeAiAssistant();
+            }
+        });
+    }
 }
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', init);
+
+// ========== AI ASSISTANT FUNCTIONALITY ==========
+
+let aiChatHistory = [];
+
+function openAiAssistant() {
+    document.getElementById('aiChatModal').classList.add('show');
+}
+
+function closeAiAssistant() {
+    document.getElementById('aiChatModal').classList.remove('show');
+}
+
+function toggleAiSettings() {
+    const panel = document.getElementById('aiSettingsPanel');
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+}
+
+async function sendAiMessage() {
+    const input = document.getElementById('aiChatInput');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    // Add user message to chat
+    addMessageToChat(message, 'user');
+    input.value = '';
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Process with AI
+    await processAiRequest(message);
+}
+
+function addMessageToChat(content, sender = 'ai') {
+    const messagesContainer = document.getElementById('aiChatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = sender === 'user' ? 'user-message' : 'ai-message';
+    
+    messageDiv.innerHTML = `
+        <div class="message-avatar">${sender === 'user' ? '👤' : '🤖'}</div>
+        <div class="message-content">${content}</div>
+    `;
+    
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function showTypingIndicator() {
+    const messagesContainer = document.getElementById('aiChatMessages');
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'ai-message typing-indicator-msg';
+    typingDiv.id = 'typingIndicator';
+    
+    typingDiv.innerHTML = `
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+            <div class="typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        </div>
+    `;
+    
+    messagesContainer.appendChild(typingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function removeTypingIndicator() {
+    const indicator = document.getElementById('typingIndicator');
+    if (indicator) indicator.remove();
+}
+
+async function processAiRequest(userMessage) {
+    const provider = document.getElementById('aiProvider').value;
+    const apiKey = document.getElementById('apiKey').value;
+    
+    // Simulate AI delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    removeTypingIndicator();
+    
+    // Parse user intent
+    const intent = parseUserIntent(userMessage);
+    
+    if (intent.type === 'find_lyrics') {
+        await handleFindLyrics(intent.songName);
+    } else if (intent.type === 'add_lyrics') {
+        await handleAddLyrics(intent.songName, intent.lyrics);
+    } else if (intent.type === 'song_info') {
+        handleSongInfo(intent.songName);
+    } else {
+        handleGeneralQuery(userMessage);
+    }
+}
+
+function parseUserIntent(message) {
+    const lowerMsg = message.toLowerCase();
+    
+    // Check for find lyrics intent
+    if (lowerMsg.includes('find') || lowerMsg.includes('search') || lowerMsg.includes('get')) {
+        if (lowerMsg.includes('lyrics') || lowerMsg.includes('song')) {
+            // Extract song name
+            const songName = extractSongName(message);
+            return { type: 'find_lyrics', songName };
+        }
+    }
+    
+    // Check for add lyrics intent
+    if (lowerMsg.includes('add') || lowerMsg.includes('update')) {
+        const songName = extractSongName(message);
+        return { type: 'add_lyrics', songName };
+    }
+    
+    // Check for song info
+    if (lowerMsg.includes('about') || lowerMsg.includes('tell me') || lowerMsg.includes('information')) {
+        const songName = extractSongName(message);
+        return { type: 'song_info', songName };
+    }
+    
+    return { type: 'general' };
+}
+
+function extractSongName(message) {
+    // Try to match song names from our database
+    for (const song of muruganSongs) {
+        if (message.toLowerCase().includes(song.nameEnglish.toLowerCase()) ||
+            message.includes(song.nameTamil)) {
+            return song.nameEnglish;
+        }
+    }
+    
+    // Extract quoted text or capitalized words
+    const quotedMatch = message.match(/[\"'](.+?)[\"']/);
+    if (quotedMatch) return quotedMatch[1];
+    
+    // Return the message without common words
+    const commonWords = ['find', 'search', 'get', 'lyrics', 'for', 'the', 'song', 'add', 'please'];
+    const words = message.split(' ').filter(w => !commonWords.includes(w.toLowerCase()));
+    return words.join(' ') || 'unknown song';
+}
+
+async function handleFindLyrics(songName) {
+    const song = muruganSongs.find(s => 
+        s.nameEnglish.toLowerCase().includes(songName.toLowerCase()) ||
+        s.nameTamil.includes(songName)
+    );
+    
+    if (song) {
+        const hasLyrics = !song.tamilLyrics.includes('[Add') && !song.tamilLyrics.includes('[★');
+        
+        if (hasLyrics) {
+            addMessageToChat(`
+                <p>Found <strong>${song.nameTamil} (${song.nameEnglish})</strong>! ✅</p>
+                <p>The lyrics are already in our database. Click the song card to view them.</p>
+                <div class=\"message-actions\">
+                    <button class=\"action-btn-small\" onclick=\"showSongFromAi(${song.number})\">View Song</button>
+                </div>
+            `);
+        } else {
+            addMessageToChat(`
+                <p>Found <strong>${song.nameTamil} (${song.nameEnglish})</strong> in our database! 📝</p>
+                <p>However, the complete lyrics haven't been added yet.</p>
+                <p><strong>Where to find lyrics:</strong></p>
+                <ul>
+                    <li>🔗 <a href="http://www.kaumaram.com/thiru/index.html" target="_blank">Kaumaram.com</a> - Best source for Thirupugazh</li>
+                    <li>🔗 <a href="https://www.thirupugazh.org/" target="_blank">Thirupugazh.org</a> - Official resource</li>
+                    <li>📱 Search on YouTube for "${song.nameEnglish} lyrics"</li>
+                </ul>
+                <p>💡 <strong>How to add:</strong></p>
+                <ol>
+                    <li>Find the Tamil lyrics from above sources</li>
+                    <li>Copy and paste them back here</li>
+                    <li>I'll help you format and add them!</li>
+                </ol>
+                <div class=\"message-actions\">
+                    <button class=\"action-btn-small\" onclick=\"openLyricsForm(${song.number})\">Add Lyrics Now</button>
+                </div>
+            `);
+        }
+    } else {
+        addMessageToChat(`
+            <p>I couldn't find "${songName}" in our database yet. 🤔</p>
+            <p>But I can help you add it! Here's what we need:</p>
+            <ul>
+                <li>✅ Song name in Tamil and English</li>
+                <li>✅ Associated temple/place</li>
+                <li>✅ Category (Thirupugazh, Kavasam, Classical, Film)</li>
+                <li>✅ Lyrics in Tamil</li>
+                <li>✅ Transliteration in English</li>
+            </ul>
+            <p>Would you like to add this as a new song? 🎵</p>
+            <div class=\"message-actions\">
+                <button class=\"action-btn-small\" onclick=\"openNewSongForm()\">Add New Song</button>
+            </div>
+        `);
+    }
+}
+
+async function handleAddLyrics(songName, lyrics) {
+    addMessageToChat(`
+        <p>Great! Let's add lyrics for <strong>${songName}</strong> 📝</p>
+        <p>Please provide the lyrics in the following format:</p>
+        <div class=\"lyrics-preview\">TAMIL LYRICS:\n[Paste Tamil text here]\n\nENGLISH TRANSLITERATION:\n[Paste transliteration here]</div>
+        <p>You can:</p>
+        <ul>
+            <li>Copy from <a href="http://www.kaumaram.com/thiru/index.html" target="_blank">Kaumaram.com</a></li>
+            <li>Paste from any authorized source</li>
+            <li>Type it manually</li>
+        </ul>
+        <p>Just paste it in the chat and I'll format it for you! ✨</p>
+    `);
+}
+
+function handleSongInfo(songName) {
+    const song = muruganSongs.find(s => 
+        s.nameEnglish.toLowerCase().includes(songName.toLowerCase()) ||
+        s.nameTamil.includes(songName)
+    );
+    
+    if (song) {
+        addMessageToChat(`
+            <p><strong>${song.nameTamil}</strong></p>
+            <p><strong>English:</strong> ${song.nameEnglish}</p>
+            <p><strong>Place:</strong> ${song.placeTamil} (${song.place})</p>
+            <p><strong>Category:</strong> ${song.category}</p>
+            ${song.artist ? `<p><strong>Artist:</strong> ${song.artist}</p>` : ''}
+            ${song.movie ? `<p><strong>Movie:</strong> ${song.movie}</p>` : ''}
+            <div class=\"message-actions\">
+                <button class=\"action-btn-small\" onclick=\"showSongFromAi(${song.number})\">View Full Details</button>
+            </div>
+        `);
+    } else {
+        addMessageToChat(`<p>Sorry, I couldn't find information about "${songName}" in our database. 😔</p>`);
+    }
+}
+
+function handleGeneralQuery(message) {
+    const responses = [
+        `<p>I can help you find and add Murugan song lyrics! 🎵</p>
+         <p>Try asking me:</p>
+         <ul>
+            <li>"Find lyrics for Umbar Tharu"</li>
+            <li>"Search Kanda Sashti Kavasam"</li>
+            <li>"Tell me about Sharana Sharana"</li>
+            <li>"Add lyrics for [song name]"</li>
+         </ul>`,
+        `<p>I'm here to help with Murugan devotional songs! 🙏</p>
+         <p>What would you like to know?</p>`,
+        `<p>Ask me about any song in our collection or request help finding lyrics! 🎶</p>`
+    ];
+    
+    addMessageToChat(responses[Math.floor(Math.random() * responses.length)]);
+}
+
+function showSongFromAi(songNumber) {
+    closeAiAssistant();
+    setTimeout(() => showLyrics(songNumber), 300);
+}
+
+function openLyricsForm(songNumber) {
+    const song = muruganSongs.find(s => s.number === songNumber);
+    addMessageToChat(`
+        <p>Perfect! Please paste the lyrics for <strong>${song.nameEnglish}</strong> below:</p>
+        <p><em>Format example:</em></p>
+        <div class=\"lyrics-preview\">TAMIL:\nஉம்பர் தரு வெள்ளி மலையே...\n\nENGLISH:\nUmbar tharu velli malaiye...</div>
+        <p>Paste in the chat box below and I'll save it! 💾</p>
+    `);
+}
+
+function openNewSongForm() {
+    addMessageToChat(`
+        <p>Let's add a new song! Please provide details in this format:</p>
+        <div class=\"lyrics-preview\">NAME_TAMIL: [Tamil name]
+NAME_ENGLISH: [English name]
+PLACE: [Temple/Location]
+CATEGORY: [Thirupugazh/Kavasam/Classical/Film]
+ARTIST: [Artist name]
+TAMIL_LYRICS:
+[Paste Tamil lyrics]
+
+ENGLISH_TRANSLITERATION:
+[Paste transliteration]</div>
+        <p>Paste this information and I'll add the song to our database! 🎵</p>
+    `);
+}
 
 // ========== TEMPLES FUNCTIONALITY ==========
 
