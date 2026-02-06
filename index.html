@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thirupugazh - திருப்புகழ்</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>திருப்புகழ் - Thirupugazh</h1>
+            <p class="subtitle">Sacred Hymns to Lord Murugan</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search by song name or number...">
+                <button id="voiceSearchBtn" class="voice-btn" title="Voice Search">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                    </svg>
+                </button>
+                <button id="searchBtn" class="search-btn">Search</button>
+            </div>
+            <div id="voiceStatus" class="voice-status"></div>
+        </div>
+
+        <div class="places-filter" id="placesFilter">
+            <!-- Places will be populated dynamically -->
+        </div>
+
+        <div class="songs-grid" id="songsGrid">
+            <!-- Songs will be populated here -->
+        </div>
+
+        <div id="lyricsModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <div class="modal-header">
+                    <h2 id="modalSongTitle"></h2>
+                    <p class="modal-place" id="modalPlace"></p>
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="both">Both</button>
+                        <button class="lang-btn" data-lang="tamil">தமிழ்</button>
+                        <button class="lang-btn" data-lang="english">English</button>
+                    </div>
+                </div>
+                <div class="lyrics-container">
+                    <div id="tamilLyrics" class="tamil-lyrics"></div>
+                    <div id="englishLyrics" class="english-lyrics"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
