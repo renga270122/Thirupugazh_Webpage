@@ -13,6 +13,33 @@
             <p class="subtitle">Sacred Hymns, Devotional & Film Songs - For All Muruga Bhakts</p>
         </header>
 
+        <div class="welcome-banner">
+            <div class="banner-content">
+                <div class="banner-icon">🕉️</div>
+                <h2>வணக்கம்! Welcome to the Divine Portal of Lord Murugan</h2>
+                <p>Explore sacred hymns, devotional songs, and discover the six abodes (Arupadai Veedu) of Kartikeya - the Lord of War, Wisdom & Love</p>
+                <div class="banner-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalSongs">24</span>
+                        <span class="stat-label">Songs</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Arupadai Veedu</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalTemples">15+</span>
+                        <span class="stat-label">Temples</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Devotion</span>
+                    </div>
+                </div>
+                <button class="explore-btn" onclick="showTemplesSection()">🏛️ Explore Sacred Temples</button>
+            </div>
+        </div>
+
         <div class="search-section">
             <div class="search-container">
                 <input type="text" id="searchInput" placeholder="Search by song name or number...">
@@ -35,6 +62,23 @@
 
         <div class="places-filter" id="placesFilter">
             <!-- Places will be populated dynamically -->
+        </div>
+
+        <div class="temples-section" id="templesSection" style="display:none;">
+            <div class="section-header">
+                <h2>🏛️ Sacred Abodes of Lord Murugan</h2>
+                <button class="close-temples-btn" onclick="hideTemplesSection()">✖ Close</button>
+            </div>
+            
+            <div class="temples-tabs">
+                <button class="temple-tab active" data-tab="arupadai">⭐ Six Abodes (Arupadai Veedu)</button>
+                <button class="temple-tab" data-tab="india">🇮🇳 Other Indian Temples</button>
+                <button class="temple-tab" data-tab="international">🌍 International Temples</button>
+            </div>
+            
+            <div class="temples-grid" id="templesGrid">
+                <!-- Temples will be populated here -->
+            </div>
         </div>
 
         <div class="songs-grid" id="songsGrid">
@@ -89,6 +133,7 @@
         </div>
     </div>
 
+    <script src="temples.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

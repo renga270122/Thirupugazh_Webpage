@@ -930,6 +930,13 @@ function attachEventListeners() {
         const youtubePlayer = document.getElementById('youtubePlayer');
         audioContainer.style.display = 'none';
         youtubePlayer.src = '';
+        
+        // Reset visibility for songs
+        document.getElementById('playAudioBtn').style.display = 'flex';
+        document.getElementById('contributeBtn').style.display = 'flex';
+        document.getElementById('shareBtn').style.display = 'flex';
+        document.querySelector('.language-toggle').style.display = 'flex';
+        englishLyrics.style.display = 'block';
     };
     
     closeBtn.addEventListener('click', closeModal);
@@ -950,3 +957,129 @@ function attachEventListeners() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', init);
+
+// ========== TEMPLES FUNCTIONALITY ==========
+
+function showTemplesSection() {
+    document.getElementById('templesSection').style.display = 'block';
+    document.getElementById('templesSection').scrollIntoView({ behavior: 'smooth' });
+    displayTemples('arupadai');
+}
+
+function hideTemplesSection() {
+    document.getElementById('templesSection').style.display = 'none';
+}
+
+function displayTemples(category) {
+    const templesGrid = document.getElementById('templesGrid');
+    let templesToShow = [];
+    
+    if (category === 'arupadai') {
+        templesToShow = [
+            'Thirupparamkundram', 'Thiruchendur', 'Pazhani', 
+            'Swamimalai', 'Thiruthani', 'Pazhamudhircholai'
+        ];
+    } else if (category === 'india') {
+        templesToShow = ['Vaidheeswaran Koil', 'Sikkal', 'Kutralam', 'Maruthamalai'];
+    } else if (category === 'international') {
+        templesToShow = [
+            'Batu Caves', 'Nallur Kandaswamy', 'Colombo Kathiresan',
+            'Mauritius', 'Singapore', 'USA_Malibu', 'USA_Chicago', 'UK_London'
+        ];
+    }
+    
+    templesGrid.innerHTML = templesToShow.map(key => {
+        const temple = muruganTemples[key];
+        return `
+            <div class="temple-card" onclick="showTempleDetail('${key}')">
+                <div class="temple-image">
+                    ${temple.imageUrl ? `<img src="${temple.imageUrl}" alt="${temple.nameEnglish}" onerror="this.style.display='none'; this.parentElement.innerHTML='🏛️'">` : '🏛️'}
+                </div>
+                <div class="temple-content">
+                    <div class="temple-name-tamil">${temple.nameTamil}</div>
+                    <div class="temple-name-english">${temple.nameEnglish}</div>
+                    <div class="temple-location">📍 ${temple.location}</div>
+                    <div class="temple-significance">${temple.significance}</div>
+                    ${temple.speciality ? `<div class="temple-speciality">⭐ ${temple.speciality}</div>` : ''}
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    // Update active tab
+    document.querySelectorAll('.temple-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.dataset.tab === category) {
+            tab.classList.add('active');
+        }
+    });
+}
+
+function showTempleDetail(templeKey) {
+    const temple = muruganTemples[templeKey];
+    
+    modalSongTitle.textContent = `${temple.nameTamil} - ${temple.nameEnglish}`;
+    document.getElementById('modalPlace').textContent = `📍 ${temple.location}`;
+    
+    // Hide audio player and action buttons for temple details
+    document.getElementById('audioPlayerContainer').style.display = 'none';
+    document.getElementById('playAudioBtn').style.display = 'none';
+    document.getElementById('contributeBtn').style.display = 'none';
+    document.getElementById('shareBtn').style.display = 'none';
+    
+    // Hide language toggle for temples
+    document.querySelector('.language-toggle').style.display = 'none';
+    
+    const templeDetailHTML = `
+        <div class="temple-detail">
+            <div class="temple-info-grid">
+                <div class="info-item">
+                    <div class="info-label">Deity</div>
+                    <div class="info-value">${temple.deity}</div>
+                </div>
+                ${temple.coordinates ? `
+                <div class="info-item">
+                    <div class="info-label">Coordinates</div>
+                    <div class="info-value">${temple.coordinates}</div>
+                </div>` : ''}
+                ${temple.festivals ? `
+                <div class="info-item">
+                    <div class="info-label">Major Festivals</div>
+                    <div class="info-value">${temple.festivals}</div>
+                </div>` : ''}
+                ${temple.timings ? `
+                <div class="info-item">
+                    <div class="info-label">Timings</div>
+                    <div class="info-value">${temple.timings}</div>
+                </div>` : ''}
+            </div>
+            
+            <h3>🏛️ History & Significance</h3>
+            <p>${temple.history}</p>
+            
+            ${temple.legends ? `
+                <h3>📖 Legends</h3>
+                <p>${temple.legends}</p>
+            ` : ''}
+            
+            ${temple.speciality ? `
+                <h3>⭐ Special Features</h3>
+                <p>${temple.speciality}</p>
+            ` : ''}
+        </div>
+    `;
+    
+    tamilLyrics.innerHTML = templeDetailHTML;
+    englishLyrics.style.display = 'none';
+    
+    lyricsModal.classList.add('show');
+}
+
+// Add temple tab event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.temple-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            displayTemples(tab.dataset.tab);
+        });
+    });
+});
